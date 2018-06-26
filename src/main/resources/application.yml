@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: eureka-server
+  security:
+    user:
+      name: unionman
+      password: 12345678
+  boot:
+    admin:
+      context-path: /adminboard
+eureka:
+  instance:
+    prefer-ip-address: true
+    health-check-url: /actuator/health
+    lease-renewal-interval-in-seconds: 60
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 60000
+    registry-sync-retry-wait-ms: 60000
+server:
+  port: 8761
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+turbine:
+  app-config: clientone,eureka-server
+  cluster-name-expression: "default"
